@@ -2,6 +2,8 @@ require_relative '../db/sql_runner'
 
 class Student
 
+  attr_reader :first_name, :last_name, :house, :age, :id
+
   def initialize(options)
     @id = options['id'].to_i
     @first_name = options['first_name']
@@ -12,9 +14,19 @@ class Student
 
   def save
     sql = "INSERT INTO students (first_name, last_name, house, age) VALUES ('#{@first_name}', '#{@last_name}', '#{@house}', #{@age}) RETURNING id;"
-    @id = SqlRunner.run(sql)[0]['id'].to_int
+    @id = SqlRunner.run(sql)[0]['id'].to_i
   end
 
+  ###
 
+  def self.all
+   sql = 'SELECT * FROM students;'
+   SqlRunner.run(sql).map { |student| Student.new(student) }
+  end
+
+  def self.find(id)
+    sql = 'SELECT * FROM students WHERE id = #{id};'
+    SqlRunner.run(sql)
+  end
 
 end

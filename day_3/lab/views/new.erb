@@ -10,11 +10,10 @@
 
   <!-- House/ drop-down -->
   <label for="house-selection">House:</label>
-  <select name="house" id="house-selection">
-    <option value="Gryffindor">Gryffindor</option>
-    <option value="Ravenclaw">Ravenclaw</option>
-    <option value="Hufflepuff">Hufflepuff</option>
-    <option value="Slytherin">Slytherin</option>
+  <select name="house_id" id="house-selection">
+    <% @houses.each do |house| %>
+      <option value="<%=house.id%>"><%=house.name%></option>
+    <% end %>  
   </select>
 
   <!-- Age/ field -->

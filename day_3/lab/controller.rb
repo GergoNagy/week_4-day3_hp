@@ -7,12 +7,14 @@ require_relative './models/student'
 
 # Index
 get '/students' do
-  @students = Student.all()
+  @students = Student.all
+  @houses = House.all
   erb(:index)
 end
 
 # New
 get '/students/new' do
+  @houses = House.all
   erb(:new)
 end
 

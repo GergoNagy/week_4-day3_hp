@@ -1,0 +1,9 @@
+html {
+  background-color: lightgrey;
+}
+
+nav {
+  background-color: lightblue;
+  border-radius: 15px;
+  border-bottom-color: 5px blue;
+}
